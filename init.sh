@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 # GPU-Passthrough-on-NVIDIA-Jetson - Environment Init | Version 2.0.0 | Copyright (c) 2024-2025 Advantech Corporation
 readonly SCRIPT_VERSION="2.0.0"
-readonly JETSON_AI_LAB_REPO="https://pypi.jetson-ai-lab.dev/jp6/cu126"
-readonly ONNXRUNTIME_VERSION="1.16.3"
-readonly ONNX_VERSION="1.16.3"
+readonly ONNX_WHEEL_URL="https://nvidia.box.com/shared/static/iizg3ggrtdkqawkmebbfixo7sce6j365.whl"
+readonly ONNX_WHEEL_NAME="onnxruntime_gpu-1.16.0-cp38-cp38-linux_aarch64.whl"
+readonly ONNX_VERSION="1.16.0"
 readonly FLASK_VERSION="2.3.3"
 readonly RED='\033[0;31m' GREEN='\033[0;32m' YELLOW='\033[1;33m' BLUE='\033[0;34m'
 readonly CYAN='\033[0;36m' BOLD='\033[1m' NC='\033[0m'
@@ -51,35 +51,50 @@ parse_args() {
 run_install() {
     show_progress "Checking system requirements..."
     sleep 0.3
+
+    # Check if pip is available, install if not
+    if ! command -v pip3 &>/dev/null && ! command -v pip &>/dev/null; then
+        show_progress "Installing pip..."
+        apt-get update &>/dev/null || apt-get update
+        apt-get install -y python3-pip &>/dev/null || apt-get install -y python3-pip
+    fi
+
     show_progress "Removing conflicting packages..."
     pip3 uninstall -y onnxruntime onnxruntime-gpu onnxruntime-gpu-tensorrt ort-nightly ort-nightly-gpu onnx &>/dev/null || true
     pip3 cache purge &>/dev/null || true
-
+    show_progress "Downloading ONNX Runtime GPU..."
+    local wheel_path="/tmp/${ONNX_WHEEL_NAME}"
     local need_install=true
     if [[ "$FORCE_REINSTALL" != "true" ]]; then
         if python3 -c "import onnxruntime as ort; exit(0 if 'CUDAExecutionProvider' in ort.get_available_providers() else 1)" &>/dev/null; then
             need_install=false
         fi
     fi
-
     if [[ "$need_install" == "true" ]]; then
-        show_progress "Installing ONNX Runtime GPU ${ONNXRUNTIME_VERSION} from Jetson AI Lab..."
-        if ! pip3 install --extra-index-url "${JETSON_AI_LAB_REPO}" "onnxruntime-gpu==${ONNXRUNTIME_VERSION}" &>/dev/null; then
-            echo -e "\n${RED}ONNX Runtime GPU install failed${NC}"
+        if [[ ! -f "$wheel_path" ]]; then
+            wget -q "$ONNX_WHEEL_URL" -O "$wheel_path" 2>/dev/null || curl -sL -o "$wheel_path" "$ONNX_WHEEL_URL" 2>/dev/null
+            if [[ ! -f "$wheel_path" ]] || [[ ! -s "$wheel_path" ]]; then
+                echo -e "\n${RED}Download failed${NC}"
+                ERROR_COUNT=1
+                return
+            fi
+        fi
+        show_progress "Installing ONNX Runtime GPU..."
+        if ! pip3 install "$wheel_path" &>/dev/null; then
+            echo -e "\n${RED}Install failed${NC}"
             ERROR_COUNT=1
             return
         fi
+        rm -f "$wheel_path"
     else
         show_progress "ONNX Runtime GPU already installed..."
     fi
-
-    show_progress "Installing onnx ${ONNX_VERSION}..."
-    pip3 install --extra-index-url "${JETSON_AI_LAB_REPO}" "onnx==${ONNX_VERSION}" --quiet &>/dev/null || true
-
+    show_progress "Installing onnx..."
+    pip3 uninstall -y onnx &>/dev/null || true
+    pip3 install "onnx==${ONNX_VERSION}" --quiet --force-reinstall &>/dev/null || true
     show_progress "Installing Flask and dependencies..."
     pip3 install "Flask==${FLASK_VERSION}" --quiet &>/dev/null || pip3 install flask --quiet &>/dev/null || true
     pip3 install --quiet numpy pillow pyyaml tqdm requests &>/dev/null || true
-
     if [[ "$SKIP_VERIFY" == "false" ]]; then
         show_progress "Verifying installation..."
         if ! python3 -c "import onnxruntime as ort; exit(0 if 'CUDAExecutionProvider' in ort.get_available_providers() else 1)" &>/dev/null; then
