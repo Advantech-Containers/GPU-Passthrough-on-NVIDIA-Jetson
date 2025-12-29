@@ -78,7 +78,7 @@ services:
       # Application directories (read-write)
       - ./diagnostics:/advantech/diagnostics:rw
       # Init script
-      - ./init.sh:/advantech/init.sh:ro
+      - ./init.sh:/advantech/init.sh:rw
       - ./wise-bench.sh:/advantech/wise-bench.sh:ro
       # X11 display
       - /tmp/.X11-unix:/tmp/.X11-unix:rw
