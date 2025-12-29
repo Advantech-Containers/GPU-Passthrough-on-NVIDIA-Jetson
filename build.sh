@@ -165,6 +165,8 @@ run_post_start_scripts() {
     local onnx_script="/advantech/init.sh"
     if docker exec "${CONTAINER_NAME}" test -f "$onnx_script" 2>/dev/null; then
         log "Found Initialization script inside container"
+        log "Setting executable permissions..."
+        docker exec "${CONTAINER_NAME}" chmod +x "$onnx_script" 2>/dev/null || true
         log "Installing GPU-Passthrough-on-NVIDIA-Jetson Enviroment ..."
         if docker exec -it "${CONTAINER_NAME}" bash -c "$onnx_script --force"; then
             log_success "GPU-Passthrough-on-NVIDIA-Jetson Enviroment Configured Successfully"
@@ -173,7 +175,7 @@ run_post_start_scripts() {
         fi
     else
         log_warning "GPU-Passthrough-on-NVIDIA-Jetson Enviroment Configuration script not found inside container"
-        log_warning "To install later, run inside container: ./init.sh --force"
+        log_warning "To install later, run inside container: chmod +x init.sh && ./init.sh --force"
     fi
 }
 connect_to_container() {
