@@ -23,7 +23,7 @@ The  GPU Passthrough on NVIDIA Jetson™ provides a comprehensive environment fo
 | Platform | NVIDIA Jetson (Orin-nano, Orin-nx, Xavier AGX) |
 | GPU Architecture | Ampere, Volta, Pascal |
 | Memory | 4GB, 8GB, 16GB or 32GB shared |
-| JetPack | 5.x |
+| JetPack | 6.x (r36.4.0) |
 
 For troubleshooting, see the [Troubleshooting Wiki](https://github.com/Advantech-EdgeSync-Containers/GPU-Passthrough-on-NVIDIA-Jetson/wiki/Advantech-Containers'-Troubleshooting-Guide).
 
@@ -49,11 +49,11 @@ Install these components on your Advantech device before using this toolkit.
 
 | Component | Version |
 |:----------|:--------|
-| JetPack | 5.1.2 |
-| CUDA | 11.4.315 |
-| cuDNN | 8.6.0.166 |
-| TensorRT | 8.5.2.2 |
-| OpenCV | 4.5.4 |
+| JetPack | 6.x (r36.4.0) |
+| CUDA | 12.6.68 |
+| cuDNN | 9.3.0.75 |
+| TensorRT | 10.3.0.30 |
+| OpenCV | 4.8.0 |
 | Docker | 28.1.1 or later |
 | Docker Compose | 2.39.1 or later |
 | NVIDIA Container Toolkit | 1.11.0 or later |
@@ -66,13 +66,15 @@ The Docker container includes the following pre-configured components.
 
 | Component | Version | Description |
 |:----------|:--------|:------------|
-| CUDA | 11.4.315 | GPU computing platform |
-| cuDNN | 8.6.0 | Deep Neural Network library |
-| TensorRT | 8.5.2.2 | Inference optimizer and runtime |
+| CUDA | 12.6.68 | GPU computing platform |
+| cuDNN | 9.3.0.75 | Deep Neural Network library |
+| TensorRT | 10.3.0.30 | Inference optimizer and runtime |
 | PyTorch | 2.0.0+nv23.02 | Deep learning framework |
 | TensorFlow | 2.12.0 | Machine learning framework |
-| ONNX Runtime | 1.16.0 | Cross-platform inference engine |
-| OpenCV | 4.5.0 | Computer vision library with CUDA |
+| ONNX Runtime | 1.16.3 | Cross-platform inference engine |
+| VPI | 3.2.4 | Vision Programming Interface |
+| Vulkan | 1.3.204 | Graphics and compute API |
+| OpenCV | 4.8.0 | Computer vision library with CUDA |
 | GStreamer | 1.16.2 | Multimedia framework |
 
 ## Directory Structure

@@ -29,7 +29,7 @@
 
 services:
   advantech-gpu-passthrough-on-nvidia-jetson:
-    image: edgesync.azurecr.io/advantech/jetson-gpu-passthrough:1.5.0-Ubuntu20.04-ARM
+    image: nvcr.io/nvidia/l4t-jetpack:r36.4.0
     container_name: GPU-Passthrough-on-NVIDIA-Jetson
     privileged: true
     ipc: host
@@ -44,10 +44,6 @@ services:
       maintainer: "Samir Singh <samir.singh@advantech.com>"
       vendor: "Advantech Corporation"
       version: "2.0.0"
-      description: "Advantech L2-02 AI development Container with hardware acceleration"
-      com.advantech.jetpack: "5.1.2"
-      com.advantech.cuda: "11.4"
-      com.advantech.tensorrt: "8.5"
     environment:
       # Display settings
       - DISPLAY=${DISPLAY:-:0}

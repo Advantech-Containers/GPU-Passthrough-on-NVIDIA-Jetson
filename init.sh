@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 # GPU-Passthrough-on-NVIDIA-Jetson - Environment Init | Version 2.0.0 | Copyright (c) 2024-2025 Advantech Corporation
 readonly SCRIPT_VERSION="2.0.0"
-readonly ONNX_WHEEL_URL="https://nvidia.box.com/shared/static/iizg3ggrtdkqawkmebbfixo7sce6j365.whl"
-readonly ONNX_WHEEL_NAME="onnxruntime_gpu-1.16.0-cp38-cp38-linux_aarch64.whl"
-readonly ONNX_VERSION="1.16.0"
+readonly ONNX_WHEEL_URL="https://nvidia.box.com/shared/static/zostg7ci98bez030b0xiq21eo46vhgzd.whl"
+readonly ONNX_WHEEL_NAME="onnxruntime_gpu-1.16.3-cp310-cp310-linux_aarch64.whl"
+readonly ONNX_VERSION="1.16.3"
 readonly FLASK_VERSION="2.3.3"
 readonly RED='\033[0;31m' GREEN='\033[0;32m' YELLOW='\033[1;33m' BLUE='\033[0;34m'
 readonly CYAN='\033[0;36m' BOLD='\033[1m' NC='\033[0m'
