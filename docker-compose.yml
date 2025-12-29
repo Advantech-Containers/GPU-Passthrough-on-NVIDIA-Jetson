@@ -29,7 +29,7 @@
 
 services:
   advantech-gpu-passthrough-on-nvidia-jetson:
-    image: nvcr.io/nvidia/l4t-jetpack:r36.4.0
+    image: edgesync.azurecr.io/advantech/jetson-gpu-passthrough:1.6.0-Ubuntu22.04-ARM
     container_name: GPU-Passthrough-on-NVIDIA-Jetson
     privileged: true
     ipc: host
@@ -79,7 +79,7 @@ services:
       - ./diagnostics:/advantech/diagnostics:rw
       # Init script
       - ./init.sh:/advantech/init.sh:rw
-      - ./wise-bench.sh:/advantech/wise-bench.sh:ro
+      - ./wise-bench.sh:/advantech/wise-bench.sh:rw
       # X11 display
       - /tmp/.X11-unix:/tmp/.X11-unix:rw
       - ${XAUTHORITY:-$HOME/.Xauthority}:/tmp/.docker.xauth:rw
