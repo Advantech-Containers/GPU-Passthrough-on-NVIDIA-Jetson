@@ -80,7 +80,7 @@ run_install() {
             fi
         fi
         show_progress "Installing ONNX Runtime GPU..."
-        if ! pip3 install "$wheel_path" &>/dev/null; then
+        if ! pip3 install "onnxruntime==1.16.0" &>/dev/null; then
             echo -e "\n${RED}Install failed${NC}"
             ERROR_COUNT=1
             return
