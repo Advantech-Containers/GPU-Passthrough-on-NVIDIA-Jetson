@@ -25,7 +25,7 @@ The  GPU Passthrough on NVIDIA Jetson™ provides a comprehensive environment fo
 | Memory | 4GB, 8GB, 16GB or 32GB shared |
 | JetPack | 5.x |
 
-For troubleshooting, see the [Troubleshooting Wiki](https://github.com/Advantech-EdgeSync-Containers/GPU-Passthrough-on-NVIDIA-Jetson/wiki/Advantech-Containers'-Troubleshooting-Guide).
+For troubleshooting, see the [Troubleshooting Wiki](https://github.com/Advantech-Containers/GPU-Passthrough-on-NVIDIA-Jetson/wiki/Advantech-Containers'-Troubleshooting-Guide).
 
 ## Table of Contents
 
