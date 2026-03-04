@@ -236,7 +236,7 @@ For complete license details, see [LICENSE](LICENSE) for complete terms.
 
 ## Support
 
-For documentation and troubleshooting, visit the [Troubleshooting Wiki](https://github.com/Advantech-EdgeSync-Containers/GPU-Passthrough-on-NVIDIA-Jetson/wiki/Advantech-Containers'-Troubleshooting-Guide).
-For issues, submit to [GitHub Issues](https://github.com/Advantech-EdgeSync-Containers/GPU-Passthrough-on-NVIDIA-Jetson/issues).
+For documentation and troubleshooting, visit the [Troubleshooting Wiki](https://github.com/Advantech-Containers/GPU-Passthrough-on-NVIDIA-Jetson/wiki/Advantech-Containers'-Troubleshooting-Guide).
+For issues, submit to [GitHub Issues](https://github.com/Advantech-Containers/GPU-Passthrough-on-NVIDIA-Jetson/issues).
 
 Copyright © 2025 Advantech Corporation. All rights reserved.
