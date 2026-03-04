@@ -25,7 +25,7 @@ The  GPU Passthrough on NVIDIA Jetson™ provides a comprehensive environment fo
 | Memory | 4GB, 8GB, 16GB or 32GB shared |
 | JetPack | 5.x |
 
-For troubleshooting, see the [Troubleshooting Wiki](https://github.com/Advantech-EdgeSync-Containers/GPU-Passthrough-on-NVIDIA-Jetson/wiki/Advantech-Containers'-Troubleshooting-Guide).
+For troubleshooting, see the [Troubleshooting Wiki](https://github.com/Advantech-Containers/GPU-Passthrough-on-NVIDIA-Jetson/wiki/Advantech-Containers'-Troubleshooting-Guide).
 
 ## Table of Contents
 
@@ -91,7 +91,7 @@ GPU-Passthrough-on-NVIDIA-Jetson/
 ```
 
 ## Before You Start
-Before proceeding, ensure that your system meets the required [general-required-packages-on-host-system](#general-required-packages-on-host-system). If you encounter any issues or inconsistencies in your environment, please consult our [Troubleshooting Wiki](https://github.com/Advantech-EdgeSync-Containers/GPU-Passthrough-on-NVIDIA-Jetson/wiki/Advantech-Containers'-Troubleshooting-Guide) for solutions and to verify that all prerequisites are properly satisfied
+Before proceeding, ensure that your system meets the required [general-required-packages-on-host-system](#general-required-packages-on-host-system). If you encounter any issues or inconsistencies in your environment, please consult our [Troubleshooting Wiki](https://github.com/Advantech-Containers/GPU-Passthrough-on-NVIDIA-Jetson/wiki/Advantech-Containers'-Troubleshooting-Guide) for solutions and to verify that all prerequisites are properly satisfied
 
 - Ensure the following components are installed on your device along with other packages mentioned in the [general-required-packages-on-host-system](#general-required-packages-on-host-system):
   - **Docker**
@@ -236,7 +236,7 @@ For complete license details, see [LICENSE](LICENSE) for complete terms.
 
 ## Support
 
-For documentation and troubleshooting, visit the [Troubleshooting Wiki](https://github.com/Advantech-EdgeSync-Containers/GPU-Passthrough-on-NVIDIA-Jetson/wiki/Advantech-Containers'-Troubleshooting-Guide).
-For issues, submit to [GitHub Issues](https://github.com/Advantech-EdgeSync-Containers/GPU-Passthrough-on-NVIDIA-Jetson/issues).
+For documentation and troubleshooting, visit the [Troubleshooting Wiki](https://github.com/Advantech-Containers/GPU-Passthrough-on-NVIDIA-Jetson/wiki/Advantech-Containers'-Troubleshooting-Guide).
+For issues, submit to [GitHub Issues](https://github.com/Advantech-Containers/GPU-Passthrough-on-NVIDIA-Jetson/issues).
 
 Copyright © 2025 Advantech Corporation. All rights reserved.
